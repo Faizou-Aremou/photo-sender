@@ -2,8 +2,9 @@
  * mongo db manager
  * https://www.tutorialkart.com/nodejs/mongoose/insert-document-to-mongodb/
  */
-const Orders = require('./order-model');
-const Transactions = require('./transaction-model');
+const Orders = require('../../models/order-model');
+const Transactions = require('../../models/transaction-model');
+
 class MongooseManager {
 
     /**
@@ -37,24 +38,21 @@ class MongooseManager {
         })
     }
     /**
-     * get transaction
-     * @param photoname 
+     * get transactions 
      */
-    getTransaction(photoName) {
-        Transactions.find({ photoName: photoName }, (err, transaction) => {
+    getTransactions(field, value) {
+        Transactions.find({ [field]: value }, (err, transactions) => {
             if (err) console.log(err);
-
-            return transaction;
+            return transactions;
         })
     }
     /**
-     * get order
+     * get order by sessionId
      */
-
-    getOrder(sessionId) {
-        Orders.find({ sessionId: sessionId }, (err, order) => {
+    getOrders(field, value) {
+        Orders.find({ [field]: value }, (err, orders) => {
             if (err) console.log(err)
-            return order;
+            return orders;
         })
     }
     /**

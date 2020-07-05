@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const TransactionsSchema = new mongoose.Schema({
-    sessionId: { type: String, required: true, lowercase: true, trim: true },
+    sessionId: { type: mongoose.Schema.Types.ObjectId, ref:'Orders'},
     photoName: { type: String, required: true, lowercase: true, trim: true },
     creationDate: Date,
     format: String,
