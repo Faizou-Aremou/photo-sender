@@ -6,11 +6,11 @@
  * https://stackoverflow.com/questions/57895175/server-discovery-and-monitoring-engine-is-deprecated
  */
 const mongoose = require('mongoose');
-
-//Set up default mongoose connection
+const winston = require('../../config/winston');
+//Set up default mongoose connection (serveur://adresseIp/nomdelabase)
 const mongoDB = 'mongodb://127.0.0.1/photo_sender_db';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }).then(() => {
-    console.log('db is connected');
+    winston.debug('db is connected');
 }); // returns connection
 
 //Get the default connection

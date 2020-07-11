@@ -13,7 +13,7 @@ class MongooseManager {
     createOrders(sessionId) {
         const params = { sessionId: sessionId };
         Orders.create(params, (err, order) => {
-            if (err) console.log(err);
+            if (err) winston.debug(`${JSON.stringify(err)}`);
             this.order = order;
         })
     }
@@ -24,7 +24,7 @@ class MongooseManager {
     createTransactions(sessionId, photoName) {
         const params = { sessionId: sessionId, photoName: photoName };
         Transactions.create(params, (err, transaction) => {
-            if (err) console.log(err);
+            if (err) winston.debug(`${JSON.stringify(err)}`);
             this.transaction = transaction;
         })
     }
@@ -34,7 +34,7 @@ class MongooseManager {
      */
     save(collection) {
         collection.save((err) => {
-            if (err) console.log(error);
+            if (err) winston.debug(`${JSON.stringify(err)}`);
         })
     }
     /**
@@ -42,7 +42,7 @@ class MongooseManager {
      */
     getTransactions(field, value) {
         Transactions.find({ [field]: value }, (err, transactions) => {
-            if (err) console.log(err);
+            if (err) winston.debug(`${JSON.stringify(err)}`);
             return transactions;
         })
     }
@@ -51,7 +51,7 @@ class MongooseManager {
      */
     getOrders(field, value) {
         Orders.find({ [field]: value }, (err, orders) => {
-            if (err) console.log(err)
+            if (err) winston.debug(`${JSON.stringify(err)}`);
             return orders;
         })
     }

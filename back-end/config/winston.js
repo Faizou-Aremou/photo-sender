@@ -1,8 +1,11 @@
 const appRoot = require('app-root-path');
 const winston = require('winston');
-
-
-var options = {
+/**
+ * Configuration of winston
+ * https://www.codeflow.site/fr/article/how-to-use-winston-to-log-node-js-applications
+ */
+// specifications of logs objets
+const options = {
     file: {
         level: 'info',
         filename: `${appRoot}/logs/app.log`,
@@ -20,7 +23,7 @@ var options = {
     }
 }
 // instantiate a new winston logger with the settings defined above
-const logger = new winston.logger({
+const logger = winston.createLogger({
     transports: [
         new winston.transports.File(options.file),
         new winston.transports.Console(options.console)
