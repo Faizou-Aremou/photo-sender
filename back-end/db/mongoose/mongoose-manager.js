@@ -30,7 +30,7 @@ class MongooseManager {
     }
 
     /**
-     * saves document  c-a-d equivalent of uplet 
+     * saves document c-a-d equivalent of uplet 
      */
     save(collection) {
         collection.save((err) => {
